@@ -106,6 +106,9 @@ endif
 
 " airline status line
 let g:airline_theme='light'
+" also consider this if you want a colored status bar :
+" set t_Co=256
+
 if has('gui_running')
     let g:airline_powerline_fonts=1
 endif
