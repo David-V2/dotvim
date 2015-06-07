@@ -93,8 +93,8 @@ snippet ppackage
 	${3}
 snippet pservice
 	service { '${1:service name}' :
-		ensure => ${2:running},
-		enable => ${3:true},
+	    ensure => ${2:running},
+	    enable => ${3:true},
 	}
 
 	${4}
@@ -110,11 +110,11 @@ snippet sfile
 	${8}
 snippet tfile
 	file { '${1:filename}' :
-	    ensure => '${2:file}',
-		content => template('${3:modulename}/${4:tplfile}'),
-	    owner  => '${5:root}',
-	    group  => '${6:root}',
-	    mode   => '${7:0640}',
+	    ensure  => '${2:file}',
+	    content => template('${3:modulename}/${4:tplfile}'),
+	    owner   => '${5:root}',
+	    group   => '${6:root}',
+	    mode    => '${7:0640}',
 	}
 
 	${8}
