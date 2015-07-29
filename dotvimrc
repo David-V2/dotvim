@@ -4,6 +4,9 @@
 " be iMproved
 set nocompatible
 
+highlight ColorColumn ctermbg=magenta
+call matchadd('ColorColumn', '\%81v', 100)
+
 " Try to avoid nasty terminal artefacts
 set t_RV=
 
@@ -38,6 +41,7 @@ endif
 "call add(g:pathogen_disabled, 'ctrlp')
 "call add(g:pathogen_disabled, 'cucumber')
 "call add(g:pathogen_disabled, 'deletetrailingwhitespace')
+"call add(g:pathogen_disabled, 'dragvisuals')
 "call add(g:pathogen_disabled, 'easytags')
 "call add(g:pathogen_disabled, 'endwise')
 "call add(g:pathogen_disabled, 'flake8')
@@ -139,14 +143,14 @@ map k gk
 map j gj
 
 " for my own good
-"map <Left> <Nop>
-"map <Right> <Nop>
-"map <Up> <Nop>
-"map <Down> <Nop>
-"imap <up> <nop>
-"imap <down> <nop>
-"imap <left> <nop>
-"imap <right> <nop>
+map <Left> <Nop>
+map <Right> <Nop>
+map <Up> <Nop>
+map <Down> <Nop>
+imap <up> <nop>
+imap <down> <nop>
+imap <left> <nop>
+imap <right> <nop>
 
 syntax on
 
@@ -430,10 +434,19 @@ function! SynStack()
   echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
 endfunction
 
-
 " color for item under cursor
 nmap <F11> :call <SID>SynColour()<CR>
 function! <SID>SynColour()
   echo "guibg = ".synIDattr(synIDtrans( synID(line("."), col("."), 1) ), "bg#").", guifg = ".synIDattr(synIDtrans( synID(line("."), col("."), 1) ), "fg#")
 endfunction
+
+" dragvisuals
+" Cf Damian Conway, 'More Instantly Better Vim' - OSCON 2013
+vmap  <expr>  <LEFT>   DVB_Drag('left')
+vmap  <expr>  <RIGHT>  DVB_Drag('right')
+vmap  <expr>  <DOWN>   DVB_Drag('down')
+vmap  <expr>  <UP>     DVB_Drag('up')
+vmap  <expr>  D        DVB_Duplicate()
+" Remove any introduced trailing whitespace after moving...
+let g:DVB_TrimWS = 1
 

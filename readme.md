@@ -233,6 +233,14 @@ Deletes whitespace at the end of each line, on demand or automatically.
 From
 [https://github.com/vim-scripts/DeleteTrailingWhitespace](https://github.com/vim-scripts/DeleteTrailingWhitespace)
 
+### dragvisuals
+
+Drag visual blocks around.
+
+From
+[https://github.com/thoughtstream/Damian-Conway-s-Vim-Setup/blob/master/plugin/dragvisuals.vim](https://github.com/thoughtstream/Damian-Conway-s-Vim-Setup/blob/master/plugin/dragvisuals.vim)
+
+Demo : Damian Conway, "More Instantly Better Vim" - OSCON 2013
 
 ### easytags
 

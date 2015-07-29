@@ -45,6 +45,7 @@ get https://github.com/vim-scripts/AutoClose.git
 get https://github.com/kien/ctrlp.vim.git
 get https://github.com/tpope/vim-cucumber.git
 get https://github.com/vim-scripts/DeleteTrailingWhitespace.git
+get https://github.com/lofic/vim-dragvisuals.git
 get https://github.com/xolox/vim-easytags.git
 get https://github.com/tpope/vim-endwise.git
 get https://github.com/andviro/flake8-vim.git
