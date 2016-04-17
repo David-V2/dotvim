@@ -1,5 +1,7 @@
 snippet links
 	[${1:name}](http://${2:url} "${3:title}")${4}
+snippet ml
+	[${1:name}](http://${2:url})${3}
 snippet imgurl
 	![alt text](${1:img} "${2:title}")${3}
 snippet ovideo
@@ -15,13 +17,13 @@ snippet more!
 	<!-- more -->${1}
 snippet instag
 	{% instag ${1:url} %}${2}
-snippet note 
+snippet note
 	<span class="note">${1:Note}</span>
 snippet warning
 	<span class="warning">${1:Warning}</span>
 snippet important
 	<span class="important">${1:Important}</span>
-# Octopress codeblocks 
+# Octopress codeblocks
 snippet cb
 	{% codeblock %}
 	${1:code}
@@ -74,7 +76,7 @@ snippet cf
 	\`\`\`
 	${2}
 snippet cfs
-	\`\`\`sh
+	\`\`\`shell
 	${1:code}
 	\`\`\`
 	${2}
@@ -88,8 +90,56 @@ snippet cfp
 	${1:code}
 	\`\`\`
 	${2}
-snippet cfx 
+snippet cfx
 	\`\`\`xml
 	${1:code}
 	\`\`\`
 	${2}
+snippet cfy
+	\`\`\`yaml
+	${1:code}
+	\`\`\`
+	${2}
+snippet ms
+	\`\`\`
+	${1:code}
+	\`\`\`
+	${2}
+snippet mss
+	\`\`\`shell
+	${1:code}
+	\`\`\`
+	${2}
+snippet msr
+	\`\`\`ruby
+	${1:code}
+	\`\`\`
+	${2}
+snippet msp
+	\`\`\`python
+	${1:code}
+	\`\`\`
+	${2}
+snippet msx
+	\`\`\`xml
+	${1:code}
+	\`\`\`
+	${2}
+snippet msy
+	\`\`\`yaml
+	${1:code}
+	\`\`\`
+	${2}
+# Emoji
+snippet minfo
+	:information_source:
+snippet mnote
+	:information_source:
+snippet mwarning
+	:warning:
+snippet mwarn
+	:warning:
+snippet malert
+	:exclamation:
+snippet mbang
+	:bangbang:
