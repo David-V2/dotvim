@@ -41,7 +41,7 @@ get https://github.com/mileszs/ack.vim.git
 get https://github.com/lofic/asciitune.git
 get https://github.com/MarcWeber/vim-addon-mw-utils.git
 get https://github.com/bling/vim-airline.git
-get https://github.com/vim-scripts/AutoClose.git
+get https://github.com/lofic/vim-autoclose.git 
 get https://github.com/kien/ctrlp.vim.git
 get https://github.com/tpope/vim-cucumber.git
 get https://github.com/vim-scripts/DeleteTrailingWhitespace.git

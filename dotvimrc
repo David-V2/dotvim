@@ -264,6 +264,9 @@ function! MySpellLang()
 endf
 map <F8> :call MySpellLang()<CR>
 
+" autoclose
+autocmd FileType vim let g:autoclose_vimfilemode = 1
+
 " json
 let g:vim_json_syntax_conceal = 0
 
