@@ -36,6 +36,24 @@ snippet mcagent
 	    end
 	end
 	${4}
+snippet APACHE
+	${1:one line to give the program's name and a brief description}
+	Copyright `strftime("%Y")` ${2:copyright holder}
+	
+	Licensed under the Apache License, Version 2.0 (the "License");
+	you may not use this file except in compliance with the License.
+	You may obtain a copy of the License at
+	
+	    http://www.apache.org/licenses/LICENSE-2.0
+	
+	Unless required by applicable law or agreed to in writing, software
+	distributed under the License is distributed on an "AS IS" BASIS,
+	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	See the License for the specific language governing permissions and
+	limitations under the License.
+	
+	${3}
+# Asciidoc
 snippet --
 	-----------------------------------------------------------------------------
 	${1}
@@ -57,22 +75,33 @@ snippet ass
 	-----------------------------------------------------------------------------
 	${1:source code}
 	-----------------------------------------------------------------------------
-snippet APACHE
-	${1:one line to give the program's name and a brief description}
-	Copyright `strftime("%Y")` ${2:copyright holder}
-	
-	Licensed under the Apache License, Version 2.0 (the "License");
-	you may not use this file except in compliance with the License.
-	You may obtain a copy of the License at
-	
-	    http://www.apache.org/licenses/LICENSE-2.0
-	
-	Unless required by applicable law or agreed to in writing, software
-	distributed under the License is distributed on an "AS IS" BASIS,
-	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-	See the License for the specific language governing permissions and
-	limitations under the License.
-	
+snippet asb
+	[source, sh]
+	-----------------------------------------------------------------------------
+	${1:source code}
+	-----------------------------------------------------------------------------
+snippet h0
+	= ${1:title of the document}
+snippet h1
+	== ${1:section level 1}
+snippet h2
+	=== ${1:section level 2}
+snippet h3
+	==== ${1:section level 3}
+snippet h4
+	===== ${1:section level 4}
+snippet h5
+	====== ${1:section level 5}
+snippet ahead
+	:ascii-ids:
+	:iconsdir: /usr/share/asciidoc/icons
+	:imagesdir: ./images
+	${1}
+snippet aimage
+	image:${1:image.ext}[alt="${2:Image title}", scaledwidth="75%"]
+	${3}
+snippet aimg
+	image:${1:image.ext}[]
 	${3}
 # reveal.js markdown slide content
 snippet ms
@@ -84,7 +113,7 @@ snippet ms
 	</section>
 	
 	${2}
-# custom puppet
+# Puppet custom
 snippet ppackage
 	package { '${1:package name}' :
 	    ensure => ${2:present},
