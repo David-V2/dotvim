@@ -2,7 +2,7 @@ ack                       : 1.0.8
 addon-mw-utils            : 20150324
 airline                   : v0.7
 asciidoc                  : 8.6.9-3
-asciitune                 : v0.2
+asciitune                 : v0.3
 autoclose                 : 1.2
 ctrlp                     : 1.79
 cucumber                  : 20150324

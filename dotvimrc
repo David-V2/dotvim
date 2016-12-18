@@ -282,6 +282,7 @@ command Op setfiletype octopress
 nnoremap <leader>r :call Arev()<cr>
 nnoremap <leader>s :call Ashow()<cr>
 nnoremap <leader>b :call Abuild()<cr>
+nnoremap <leader>m :call Amin()<cr>
 
 " tagbar mediawiki support
 autocmd FileType mediawiki silent :!ctags %
