@@ -1,26 +1,67 @@
 #!/bin/bash
 
-rhreq=(ack ctags git vim-common dejavu-fonts-common dejavu-sans-mono-fonts)
+rhreq=(ack ctags git vim-common dejavu-fonts-common dejavu-sans-mono-fonts libicu-devel)
+
+# libicu-devel is a requirement for bulding the gimli ruby gem
 
 debreq=(exuberant-ctags git vim ack-grep)
 
-echo -e "Checking deps\n"
+py='false'
+adv='false'
+
+help() {
+cat<<'EOF'
+apply.sh [ OPTIONS ]
+OPTIONS
+         -h, --help
+            Help message
+         -a, --advanced
+            Advanced mode (i.e. move the cursor with hjkl only)
+         -p, --python
+            Set some plugins for python : jedi, flake8
+EOF
+}
+
+options=$(getopt -o ahp --long advanced,help,python -- "$@")
+eval set -- "$options"
+
+while true; do
+    case "$1" in
+        -a|--advanced)
+            adv='true'
+            ;;
+        -h|--help)
+            help
+            ;;
+        -p|--python)
+            py='true'
+            ;;
+        --)
+            shift
+            break
+            ;;
+    esac
+    shift
+done
+
+echo -e "Checking deps"
 
 test='OK'
 
 if [ -f /etc/debian_version ];then
-    #for i in $(cat <&5); do
     for i in ${debreq[*]}; do
         dpkg --status $i | grep -q 'Status: install ok' || test='KO'
     done
 else
-    #for i in $(cat <&4); do
     for i in ${rhreq[*]}; do
         rpm -q $i || test='KO'
     done
-    grep -q 'release 5' /etc/redhat-release
-    if [ $? -ne 0 ];then
-        rpm -q flake8 || test='KO'
+    if [ "$py" = 'true' ]; then
+        rpm -q python-flake8
+        if [ $? -ne 0 ];then
+            "python-flake8 is not installed and you specified the option --python"
+            test='KO'
+        fi
     fi
 fi
 
@@ -32,6 +73,9 @@ if [ "$test" == 'KO' ];then
     echo 'Red Hat : see installreqs-rh.sh'
     exit 1
 fi
+
+echo "You may consider (for markdown to pdf conversion) :"
+echo -e "gem install --no-ri --no-rdoc gimli\n"
 
 echo -e "Checking vim version\n"
 
@@ -57,9 +101,14 @@ cp -r fonts/* ~/.fonts
 # Little cosmetic patch
 sed -i 's/Underlined/PreProc/g' ~/.vim/bundle/octopress/syntax/octopress.vim
 
-# Pyflakes, Flake8 and Jedi only for Python 2.5+
-python -V 2>&1 | grep -q '2\.4'
-if [ $? -eq 0 ];then
-  rm -rf ~/.vim/bundle/flake8
-  rm -rf ~/.vim/bundle/jedi
+# Python
+if [ "$py" = 'false' ]; then
+    sed -i  -e "s/^.\(call add(g:pathogen_disabled, 'flake8')\)/\1/g" \
+            -e "s/^.\(call add(g:pathogen_disabled, 'jedi')\)/\1/g" \
+            ~/.vimrc
+fi
+
+# Advanced mode
+if [ "$adv" = 'true' ]; then
+    sed -i 's/"""//g' ~/.vimrc
 fi

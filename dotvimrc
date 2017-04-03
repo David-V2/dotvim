@@ -103,7 +103,7 @@ if has("win32")
     endif
 else
     "set guifont=Monospace\ 14
-    set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 14
+    set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 10
     " ^-- you need to put the powerline fonts in ~/.fonts
     " then : fc-cache -vf ~/.fonts
 endif
@@ -143,14 +143,14 @@ map k gk
 map j gj
 
 " for my own good
-map <Left> <Nop>
-map <Right> <Nop>
-map <Up> <Nop>
-map <Down> <Nop>
-imap <up> <nop>
-imap <down> <nop>
-imap <left> <nop>
-imap <right> <nop>
+"""map <Left> <Nop>
+"""map <Right> <Nop>
+"""map <Up> <Nop>
+"""map <Down> <Nop>
+"""imap <up> <nop>
+"""imap <down> <nop>
+"""imap <left> <nop>
+"""imap <right> <nop>
 
 syntax on
 
@@ -270,12 +270,27 @@ autocmd FileType vim let g:autoclose_vimfilemode = 1
 " json
 let g:vim_json_syntax_conceal = 0
 
-" Octopress
+" Octopress (markdown)
 " autocmd BufNewFile,BufRead *.markdown setfiletype octopress
 " setl ft will override any previous setfiletype
 autocmd BufNewFile,BufRead *.markdown setl ft=octopress
 autocmd BufNewFile,BufRead *.md setl ft=octopress
 command Op setfiletype octopress
+
+" Markdown
+" Build the pdf document
+function! Mbuild()
+  execute '!' . 'gimli -f ' . bufname("%")
+endfunction
+
+" Show the pdf output
+function! Mshow()
+  execute '!' . 'evince ' . expand("%:r") . '.pdf &'
+endfunction
+
+command! -bar -range=% Mbuild call Mbuild()
+command! -bar -range=% Mshow call Mshow()
+command! -bar -range=% Msee  call Mshow()
 
 " Asciidoc
 " Now in my bundle = asciitune
@@ -446,11 +461,11 @@ endfunction
 
 " dragvisuals
 " Cf Damian Conway, 'More Instantly Better Vim' - OSCON 2013
-vmap  <expr>  <LEFT>   DVB_Drag('left')
-vmap  <expr>  <RIGHT>  DVB_Drag('right')
-vmap  <expr>  <DOWN>   DVB_Drag('down')
-vmap  <expr>  <UP>     DVB_Drag('up')
-vmap  <expr>  D        DVB_Duplicate()
+"""vmap  <expr>  <LEFT>   DVB_Drag('left')
+"""vmap  <expr>  <RIGHT>  DVB_Drag('right')
+"""vmap  <expr>  <DOWN>   DVB_Drag('down')
+"""vmap  <expr>  <UP>     DVB_Drag('up')
+"""vmap  <expr>  D        DVB_Duplicate()
 " Remove any introduced trailing whitespace after moving...
-let g:DVB_TrimWS = 1
+"""let g:DVB_TrimWS = 1
 

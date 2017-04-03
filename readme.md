@@ -4,7 +4,7 @@
 
 ### On Debian-like distributions
 
-Tested on Ubuntu 12.04 and Debian 7.
+Tested on Debian 8.
 
 ```sh
 sudo apt-get -y install ack-grep exuberant-ctags git vim
@@ -18,35 +18,13 @@ cd dotvim
 
 ### On RedHat-like distributions
 
-You need a recent vim, flake8, dejavu fonts...
+Tested on RHEL and Centos 7
 
-I've made some builds for el5 and el6.
-
-
-```sh
-# Add the repo :
-
-cat>/etc/yum.repos.d/custom.repo<<'EOF'
-[custom-noarch]
-name=Custom - noarch
-baseurl=http://www.kermit.fr/custom/el$releasever/noarch/
-enabled=1
-gpgcheck=1
-gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-lcoilliot
-
-[custom-x86_64]
-name=Custom - x86_64
-baseurl=http://www.kermit.fr/custom/el$releasever/$basearch/
-enabled=1
-gpgcheck=1
-gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-lcoilliot
-EOF
-
-# Then :
+You need some recent packages for vim, flake8, dejavu fonts...
 
 yum -y install ack ctags git vim-common
 yum -y install dejavu-fonts-common dejavu-sans-mono-fonts
-yum -y install flake8 # el6 only
+yum -y install python-flake8 # provided with EPEL 7
 
 git clone https://github.com/lofic/dotvim.git dotvim
 
@@ -56,6 +34,8 @@ cd dotvim
 ```
 
 ### On Microsoft Windows
+
+This section may be out of date.
 
 #### Install vim
 
