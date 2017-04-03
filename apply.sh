@@ -59,7 +59,7 @@ else
     if [ "$py" = 'true' ]; then
         rpm -q python-flake8
         if [ $? -ne 0 ];then
-            "python-flake8 is not installed and you specified the option --python"
+            echo 'python-flake8 is not installed and you specified the option --python'
             test='KO'
         fi
     fi
