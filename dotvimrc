@@ -292,6 +292,8 @@ command! -bar -range=% Mbuild call Mbuild()
 command! -bar -range=% Mshow call Mshow()
 command! -bar -range=% Msee  call Mshow()
 
+nnoremap <leader>g :call Mbuild()<cr>
+
 " Asciidoc
 " Now in my bundle = asciitune
 nnoremap <leader>r :call Arev()<cr>
