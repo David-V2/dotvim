@@ -23,9 +23,10 @@ Tested on RHEL and Centos 7
 You need some recent packages for vim, flake8, dejavu fonts...
 
 ```
-yum -y install ack ctags git vim-common
-yum -y install dejavu-fonts-common dejavu-sans-mono-fonts
-yum -y install python-flake8 # provided with EPEL 7
+sudo yum -y install ack ctags git vim-common \
+    dejavu-fonts-common dejavu-sans-mono-fonts \
+    libicu-devel \
+    python-flake8 # EPEL 7
 
 git clone https://github.com/lofic/dotvim.git dotvim
 
