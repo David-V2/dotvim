@@ -20,6 +20,7 @@ OPTIONS
          -p, --python
             Set some plugins for python : jedi, flake8
 EOF
+exit 0
 }
 
 options=$(getopt -o ahp --long advanced,help,python -- "$@")
